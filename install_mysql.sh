@@ -3,7 +3,7 @@
 
 rm -rf mysql-5.6.24-linux-glibc2.5-x86_64
 
-mkdir -p /usr/local/mysql
+mkdir -p /home/ryan/opt/mysql
 
 ###---创建mysql用户组及用户---begin###
 groupadd mysql
@@ -12,16 +12,16 @@ echo "----创建mysql用户组及用户完成----" >> tmp.log
 ###---创建mysql用户组及用户---end###
 
 tar -zxvf ./pkg/mysql-5.6.24-linux-glibc2.5-x86_64.tar.gz
-mv mysql-5.6.24-linux-glibc2.5-x86_64/* /usr/local/mysql
+mv mysql-5.6.24-linux-glibc2.5-x86_64/* /home/ryan/opt/mysql
 
-/usr/local/mysql/scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+/home/ryan/opt/mysql/scripts/mysql_install_db --user=mysql --basedir=/home/ryan/opt/mysql --datadir=/home/ryan/opt/mysql/data
 
-chown -R mysql:mysql /usr/local/mysql/
-chown -R mysql:mysql /usr/local/mysql/data/
+chown -R mysql:mysql /home/ryan/opt/mysql/
+chown -R mysql:mysql /home/ryan/opt/mysql/data/
 
-\cp -f /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
-sed -i 's#^basedir=$#basedir=/usr/local/mysql#' /etc/init.d/mysqld
-sed -i 's#^datadir=$#datadir=/usr/local/mysql/data#' /etc/init.d/mysqld
+cp -f /home/ryan/opt/mysql/support-files/mysql.server /etc/init.d/mysqld
+sed -i 's#^basedir=$#basedir=/home/ryan/opt/mysql#' /etc/init.d/mysqld
+sed -i 's#^datadir=$#datadir=/home/ryan/opt/mysql/data#' /etc/init.d/mysqld
 
 cat > /etc/my.cnf <<END
 [client]
@@ -66,7 +66,7 @@ END
 
 chmod 755 /etc/init.d/mysqld
 
-ln -s /usr/local/mysql/bin/* /usr/local/bin/
+ln -s /home/ryan/opt/mysql/bin/* /usr/local/bin/
 
 /etc/init.d/mysqld start
 

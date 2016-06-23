@@ -9,6 +9,9 @@ iptables -F
 echo "----依赖包安装完毕----" >> tmp.log
 ###---安装依赖包---end###
 
+###---创建安装目录---###
+mkdir -p /home/ryan/opt
+
 ###---安装所需的库---begin###
 rm -rf libiconv-1.13.1
 tar -zxvf ./pkg/libiconv-1.13.1.tar.gz
