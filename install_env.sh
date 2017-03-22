@@ -13,48 +13,54 @@ echo "----依赖包安装完毕----" >> tmp.log
 mkdir -p /home/ryan/opt
 
 ###---安装所需的库---begin###
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/libiconv-1.13.1.tar.gz
 rm -rf libiconv-1.13.1
-tar -zxvf ./pkg/libiconv-1.13.1.tar.gz
+tar -zxvf libiconv-1.13.1.tar.gz
 cd libiconv-1.13.1
 ./configure --prefix=/usr/local
 make
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/zlib-1.2.3.tar.gz
 rm -rf zlib-1.2.3
-tar -zxvf ./pkg/zlib-1.2.3.tar.gz
+tar -zxvf zlib-1.2.3.tar.gz
 cd zlib-1.2.3
 ./configure
 make CFLAGS=-fpic
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/freetype-2.1.10.tar.gz
 rm -rf freetype-2.1.10
-tar -zxvf ./pkg/freetype-2.1.10.tar.gz
+tar -zxvf freetype-2.1.10.tar.gz
 cd freetype-2.1.10
 ./configure --prefix=/usr/local/freetype.2.1.10
 make
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/libpng-1.2.50.tar.gz
 rm -rf libpng-1.2.50
-tar -zxvf ./pkg/libpng-1.2.50.tar.gz
+tar -zxvf libpng-1.2.50.tar.gz
 cd libpng-1.2.50
 ./configure --prefix=/usr/local/libpng.1.2.50
 make CFLAGS=-fpic
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/libevent-1.4.14b-stable.tar.gz
 rm -rf libevent-1.4.14b-stable
-tar -zxvf ./pkg/libevent-1.4.14b-stable.tar.gz
+tar -zxvf libevent-1.4.14b-stable.tar.gz
 cd libevent-1.4.14b-stable
 ./configure
 make
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/libmcrypt-2.5.8.tar.gz
 rm -rf libmcrypt-2.5.8
-tar -zxvf ./pkg/libmcrypt-2.5.8.tar.gz
+tar -zxvf libmcrypt-2.5.8.tar.gz
 cd libmcrypt-2.5.8
 ./configure --disable-posix-threads
 make
@@ -66,16 +72,18 @@ make
 make install
 cd ../..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/pcre-8.12.tar.gz
 rm -rf pcre-8.12
-tar -zxvf ./pkg/pcre-8.12.tar.gz
+tar -zxvf pcre-8.12.tar.gz
 cd pcre-8.12
 ./configure
 make
 make install
 cd ..
 
+wget http://7xkyq4.com1.z0.glb.clouddn.com/linux/jpegsrc.v6b.tar.gz
 rm -rf jpeg-6b
-tar -zxvf ./pkg/jpegsrc.v6b.tar.gz
+tar -zxvf jpegsrc.v6b.tar.gz
 cd jpeg-6b
 if [ -e /usr/share/libtool/config.guess ]
 then 

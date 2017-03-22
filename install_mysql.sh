@@ -1,9 +1,12 @@
 #!/bin/sh
 
+mysqlVersion="5.6.24"
+mysqlPath="/home/ryan/opt/mysql-${mysqlVersion}"
 
-rm -rf mysql-5.6.24-linux-glibc2.5-x86_64
+wget http://7xkyq4.com1.z0.glb.clouddn.com/mysql/mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
+rm -rf mysql-${mysqlVersion}-linux-glibc2.5-x86_64
 
-mkdir -p /home/ryan/opt/mysql
+mkdir -p ${mysqlPath}
 
 ###---创建mysql用户组及用户---begin###
 groupadd mysql
@@ -11,17 +14,17 @@ useradd -g mysql -s /sbin/nologin mysql
 echo "----创建mysql用户组及用户完成----" >> tmp.log
 ###---创建mysql用户组及用户---end###
 
-tar -zxvf ./pkg/mysql-5.6.24-linux-glibc2.5-x86_64.tar.gz
-mv mysql-5.6.24-linux-glibc2.5-x86_64/* /home/ryan/opt/mysql
+tar -zxvf mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
+mv mysql-${mysqlVersion}-linux-glibc2.5-x86_64/* ${mysqlPath}
 
-/home/ryan/opt/mysql/scripts/mysql_install_db --user=mysql --basedir=/home/ryan/opt/mysql --datadir=/home/ryan/opt/mysql/data
+${mysqlPath}/scripts/mysql_install_db --user=mysql --basedir=${mysqlPath} --datadir=${mysqlPath}/data
 
-chown -R mysql:mysql /home/ryan/opt/mysql/
-chown -R mysql:mysql /home/ryan/opt/mysql/data/
+chown -R mysql:mysql ${mysqlPath}/
+chown -R mysql:mysql ${mysqlPath}/data/
 
-cp -f /home/ryan/opt/mysql/support-files/mysql.server /etc/init.d/mysqld
-sed -i 's#^basedir=$#basedir=/home/ryan/opt/mysql#' /etc/init.d/mysqld
-sed -i 's#^datadir=$#datadir=/home/ryan/opt/mysql/data#' /etc/init.d/mysqld
+cp -f ${mysqlPath}/support-files/mysql.server /etc/init.d/mysqld
+sed -i 's#^basedir=$#basedir='"${mysqlPath}"'#' /etc/init.d/mysqld
+sed -i 's#^datadir=$#datadir='"${mysqlPath}"'/data#' /etc/init.d/mysqld
 
 cat > /etc/my.cnf <<END
 [client]
@@ -66,9 +69,9 @@ END
 
 chmod 755 /etc/init.d/mysqld
 
-ln -s /home/ryan/opt/mysql/bin/* /usr/local/bin/
+ln -s ${mysqlPath}/bin/* /usr/local/bin/
 
-/etc/init.d/mysqld start
+#/etc/init.d/mysqld start
 
 #mysqladmin -u root password 'password'
 

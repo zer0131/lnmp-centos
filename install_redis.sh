@@ -1,14 +1,20 @@
 #!/bin/sh
 
-tar -xf redis-3.0.4.tar.gz
-cd redis-3.0.4.tar.gz
+redisVersion="3.0.4"
+redisPath="/home/ryan/opt/redis-${redisVersion}"
+
+wget http://7xkyq4.com1.z0.glb.clouddn.com/redis/redis-${redisVersion}.tar.gz
+tar -xf redis-${redisVersion}.tar.gz
+cd redis-${redisVersion}
 make && make test
-make PREFIX=/home/ryan/opt/redis install
-mkdir /home/ryan/opt/redis/conf
-cp redis_config/redis.conf /home/ryan/opt/redis/conf/
-mkdir /home/ryan/opt/redis/data
-mkdir /home/ryan/opt/redis/log
+make PREFIX=${redisPath} install
+cd ..
+
+mkdir ${redisPath}/conf
+cp redis_config/redis.conf ${redisPath}/conf/
+mkdir ${redisPath}/data
+mkdir ${redisPath}/log
 
 
 cp redis_config/redis_6380 /etc/init.d/
-cp redis_config/6380.conf /home/ryan/opt/redis/conf/
+cp redis_config/6380.conf ${redisPath}/conf/
