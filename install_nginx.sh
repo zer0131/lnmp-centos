@@ -3,7 +3,9 @@
 nginxVersion="1.7.6"
 nginxPath="/home/ryan/opt/nginx-${nginxVersion}"
 
-wget http://7xkyq4.com1.z0.glb.clouddn.com/nginx/nginx-${nginxVersion}.tar.gz
+if [! -e "nginx-${nginxVersion}.tar.gz"];then
+    wget http://7xkyq4.com1.z0.glb.clouddn.com/nginx/nginx-${nginxVersion}.tar.gz
+fi
 rm -rf nginx-${nginxVersion}
 mkdir -p ${nginxPath}
 
@@ -13,7 +15,7 @@ useradd -g www  -s /sbin/nologin www
 echo "----创建wwww用户组和用户完成----" >> tmp.log
 ###---创建wwww用户组和用户---end###
 
-tar -zxvf nginx-${nginxVersion}.tar.gz
+tar -xf nginx-${nginxVersion}.tar.gz
 cd nginx-${nginxVersion}
 ./configure --user=www --group=www --prefix=${nginxPath} --with-http_stub_status_module --without-http-cache --with-http_ssl_module --with-http_gzip_static_module
 make

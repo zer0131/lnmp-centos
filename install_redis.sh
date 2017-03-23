@@ -3,7 +3,9 @@
 redisVersion="3.0.4"
 redisPath="/home/ryan/opt/redis-${redisVersion}"
 
-wget http://7xkyq4.com1.z0.glb.clouddn.com/redis/redis-${redisVersion}.tar.gz
+if [! -e "redis-${redisVersion}.tar.gz"];then
+    wget http://7xkyq4.com1.z0.glb.clouddn.com/redis/redis-${redisVersion}.tar.gz
+fi
 tar -xf redis-${redisVersion}.tar.gz
 cd redis-${redisVersion}
 make && make test

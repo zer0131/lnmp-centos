@@ -3,10 +3,12 @@
 phpVersion="5.5.25"
 phpPath="/home/ryan/opt/php-${phpVersion}"
 
-wget http://7xkyq4.com1.z0.glb.clouddn.com/php/php-${phpVersion}.tar.gz
+if [! -e "php-${phpVersion}.tar.gz"];then
+    wget http://7xkyq4.com1.z0.glb.clouddn.com/php/php-${phpVersion}.tar.gz
+fi
 rm -rf php-${phpVersion}
 
-tar -zxvf php-${phpVersion}.tar.gz
+tar -xf php-${phpVersion}.tar.gz
 cd php-${phpVersion}
 ./configure --prefix=${phpPath} --enable-opcache --with-config-file-path=${phpPath}/etc --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-fpm --enable-fastcgi --enable-static --enable-inline-optimization --enable-sockets --enable-wddx --enable-zip --enable-calendar --enable-bcmath --enable-soap --with-zlib --with-iconv --with-gd --with-xmlrpc --enable-mbstring --without-sqlite --with-curl --enable-ftp --with-mcrypt  --with-freetype-dir=/usr/local/freetype.2.1.10 --with-jpeg-dir=/usr/local/jpeg.6 --with-png-dir=/usr/local/libpng.1.2.50 --disable-ipv6 --disable-debug --with-openssl --disable-maintainer-zts --disable-safe-mode --disable-fileinfo
 

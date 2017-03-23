@@ -3,7 +3,9 @@
 mysqlVersion="5.6.24"
 mysqlPath="/home/ryan/opt/mysql-${mysqlVersion}"
 
-wget http://7xkyq4.com1.z0.glb.clouddn.com/mysql/mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
+if [! -e "mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz"];then
+    wget http://7xkyq4.com1.z0.glb.clouddn.com/mysql/mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
+fi
 rm -rf mysql-${mysqlVersion}-linux-glibc2.5-x86_64
 
 mkdir -p ${mysqlPath}
@@ -14,7 +16,7 @@ useradd -g mysql -s /sbin/nologin mysql
 echo "----创建mysql用户组及用户完成----" >> tmp.log
 ###---创建mysql用户组及用户---end###
 
-tar -zxvf mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
+tar -xf mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
 mv mysql-${mysqlVersion}-linux-glibc2.5-x86_64/* ${mysqlPath}
 
 ${mysqlPath}/scripts/mysql_install_db --user=mysql --basedir=${mysqlPath} --datadir=${mysqlPath}/data
