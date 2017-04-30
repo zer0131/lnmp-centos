@@ -10,7 +10,7 @@ echo "----依赖包安装完毕----" >> tmp.log
 ###---安装依赖包---end###
 
 ###---创建安装目录---###
-mkdir -p /home/ryan/opt
+mkdir -p ~/opt
 
 ###---安装所需的库---begin###
 if [! -e "libiconv-1.13.1.tar.gz"];then

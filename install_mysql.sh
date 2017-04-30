@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mysqlVersion="5.6.24"
-mysqlPath="/home/ryan/opt/mysql-${mysqlVersion}"
+mysqlPath="~/opt/mysql-${mysqlVersion}"
 
 if [! -e "mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/mysql/mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz

@@ -4,11 +4,11 @@
 # as it does use of the /proc filesystem.
 
 REDISPORT=6380
-EXEC=/home/ryan/opt/redis/bin/redis-server
-CLIEXEC=/home/ryan/opt/redis/bin/redis-cli
+EXEC=~/opt/redis/bin/redis-server
+CLIEXEC=~/opt/redis/bin/redis-cli
 
-PIDFILE=/home/ryan/opt/redis/log/redis_${REDISPORT}.pid
-CONF="/home/ryan/opt/redis/conf/${REDISPORT}.conf"
+PIDFILE=~/opt/redis/log/redis_${REDISPORT}.pid
+CONF="~/opt/redis/conf/${REDISPORT}.conf"
 
 case "$1" in
     start)

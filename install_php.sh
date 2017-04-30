@@ -1,7 +1,7 @@
 #!/bin/bash
 
 phpVersion="5.5.25"
-phpPath="/home/ryan/opt/php-${phpVersion}"
+phpPath="~/opt/php-${phpVersion}"
 
 if [! -e "php-${phpVersion}.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/php/php-${phpVersion}.tar.gz

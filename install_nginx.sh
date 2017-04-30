@@ -1,7 +1,7 @@
 #!/bin/bash
 
 nginxVersion="1.7.6"
-nginxPath="/home/ryan/opt/nginx-${nginxVersion}"
+nginxPath="~/opt/nginx-${nginxVersion}"
 
 if [! -e "nginx-${nginxVersion}.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/nginx/nginx-${nginxVersion}.tar.gz
