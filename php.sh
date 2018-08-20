@@ -1,7 +1,7 @@
 #!/bin/bash
 
 phpVersion="5.5.25"
-phpPath="~/opt/php-${phpVersion}"
+phpPath="/home/work/php-${phpVersion}"
 
 if [! -e "php-${phpVersion}.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/php/php-${phpVersion}.tar.gz
@@ -25,8 +25,8 @@ sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g' ${phpPath}/etc/php.ini
 sed -i 's/max_execution_time = 30/max_execution_time = 300/g' ${phpPath}/etc/php.ini
 
 cp ${phpPath}/etc/php-fpm.conf.default ${phpPath}/etc/php-fpm.conf
-sed -i 's,user = nobody,user=www,g'   ${phpPath}/etc/php-fpm.conf
-sed -i 's,group = nobody,group=www,g'   ${phpPath}/etc/php-fpm.conf
+sed -i 's,user = nobody,user=work,g'   ${phpPath}/etc/php-fpm.conf
+sed -i 's,group = nobody,group=work,g'   ${phpPath}/etc/php-fpm.conf
 sed -i 's,^pm.min_spare_servers = 1,pm.min_spare_servers = 5,g'   ${phpPath}/etc/php-fpm.conf
 sed -i 's,^pm.max_spare_servers = 3,pm.max_spare_servers = 35,g'   ${phpPath}/etc/php-fpm.conf
 sed -i 's,^pm.max_children = 5,pm.max_children = 100,g'   ${phpPath}/etc/php-fpm.conf

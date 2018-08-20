@@ -31,15 +31,16 @@ cd lnmp-centos
 │  │  ├─nginx.conf         nginx配置文件
 │  │  ├─fastcgi.conf       fastcgi配置文件
 │  │  ├─vhosts             nginx虚拟目录
+│  ├─redis_config          redis配置目录
 │  ├─install.sh            一键安装脚本
-│  ├─install_env.sh        安装环境脚本
-│  ├─install_mysql.sh      mysql安装脚本
-│  ├─install_nginx.sh      nginx安装脚本
-│  ├─install_php.sh        php安装脚本
-│  └─install_redis.sh      redis安装脚本
+│  ├─env.sh                安装环境脚本
+│  ├─mysql.sh              mysql安装脚本
+│  ├─nginx.sh              nginx安装脚本
+│  ├─php.sh                php安装脚本
+│  └─redis.sh              redis安装脚本
 ```
 
-**注意：单独安装任何软件都要先执行install_env.sh(执行一次就可以)**
+**注意：单独安装任何软件都要先执行env.sh(执行一次就可以)**
 
 ## 后续操作
 

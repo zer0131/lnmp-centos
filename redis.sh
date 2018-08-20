@@ -1,7 +1,7 @@
 #!/bin/sh
 
 redisVersion="3.0.4"
-redisPath="~/opt/redis-${redisVersion}"
+redisPath="/home/work/redis-${redisVersion}"
 
 if [! -e "redis-${redisVersion}.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/redis/redis-${redisVersion}.tar.gz

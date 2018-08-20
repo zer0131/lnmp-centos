@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mysqlVersion="5.6.24"
-mysqlPath="~/opt/mysql-${mysqlVersion}"
+mysqlPath="/home/work/mysql-${mysqlVersion}"
 
 if [! -e "mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/mysql/mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
@@ -11,15 +11,15 @@ rm -rf mysql-${mysqlVersion}-linux-glibc2.5-x86_64
 mkdir -p ${mysqlPath}
 
 ###---创建mysql用户组及用户---begin###
-groupadd mysql
-useradd -g mysql -s /sbin/nologin mysql
-echo "----创建mysql用户组及用户完成----" >> tmp.log
+#groupadd mysql
+#useradd -g mysql -s /sbin/nologin mysql
+#echo "----创建mysql用户组及用户完成----" >> tmp.log
 ###---创建mysql用户组及用户---end###
 
 tar -xf mysql-${mysqlVersion}-linux-glibc2.5-x86_64.tar.gz
 mv mysql-${mysqlVersion}-linux-glibc2.5-x86_64/* ${mysqlPath}
 
-${mysqlPath}/scripts/mysql_install_db --user=mysql --basedir=${mysqlPath} --datadir=${mysqlPath}/data
+${mysqlPath}/scripts/mysql_install_db --user=work --basedir=${mysqlPath} --datadir=${mysqlPath}/data
 
 chown -R mysql:mysql ${mysqlPath}/
 chown -R mysql:mysql ${mysqlPath}/data/

@@ -2,15 +2,15 @@
 
 
 ###---安装环境---##
-./install_env.sh
+./env.sh
 
 ###---安装mysql-5.6.24---##
-./install_mysql.sh
+./mysql.sh
 
 ###---安装nginx-1.7.2---##
-./install_nginx.sh
+./nginx.sh
 
 ###---安装php-5.5.25---##
-./install_php.sh
+./php.sh
 
 echo "----安装完成----" >> tmp.log

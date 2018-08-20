@@ -9,8 +9,12 @@ iptables -F
 echo "----依赖包安装完毕----" >> tmp.log
 ###---安装依赖包---end###
 
+###---创建用户及用户组---###
+groupadd work 
+useradd -g work -s /sbin/nologin work 
+
 ###---创建安装目录---###
-mkdir -p ~/opt
+mkdir -p /home/work 
 
 ###---安装所需的库---begin###
 if [! -e "libiconv-1.13.1.tar.gz"];then

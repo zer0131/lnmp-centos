@@ -1,7 +1,7 @@
 #!/bin/bash
 
 nginxVersion="1.7.6"
-nginxPath="~/opt/nginx-${nginxVersion}"
+nginxPath="/home/work/nginx-${nginxVersion}"
 
 if [! -e "nginx-${nginxVersion}.tar.gz"];then
     wget http://7xkyq4.com1.z0.glb.clouddn.com/nginx/nginx-${nginxVersion}.tar.gz
@@ -10,19 +10,19 @@ rm -rf nginx-${nginxVersion}
 mkdir -p ${nginxPath}
 
 ###---创建wwww用户组和用户---begin###
-groupadd www
-useradd -g www  -s /sbin/nologin www
-echo "----创建wwww用户组和用户完成----" >> tmp.log
+#groupadd www
+#useradd -g www  -s /sbin/nologin www
+#echo "----创建wwww用户组和用户完成----" >> tmp.log
 ###---创建wwww用户组和用户---end###
 
 tar -xf nginx-${nginxVersion}.tar.gz
 cd nginx-${nginxVersion}
-./configure --user=www --group=www --prefix=${nginxPath} --with-http_stub_status_module --without-http-cache --with-http_ssl_module --with-http_gzip_static_module
+./configure --user=work --group=work --prefix=${nginxPath} --with-http_stub_status_module --without-http-cache --with-http_ssl_module --with-http_gzip_static_module
 make
 make install
 cd ..
 chmod 775 ${nginxPath}/logs
-chown -R www:www ${nginxPath}/logs
+chown -R wrok:work ${nginxPath}/logs
 
 cp -fR ./nginx_config/* ${nginxPath}/conf/
 CPU_NUM=$(cat /proc/cpuinfo | grep processor | wc -l)
