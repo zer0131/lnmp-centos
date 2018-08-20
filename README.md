@@ -1,4 +1,4 @@
-# LNMP Centos一键安装
+# LNMP(Centos)一键安装
 
 ## 描述
 
@@ -6,26 +6,26 @@ lnmp-centos是针对Centos部署php+nginx+mysql+redis的一键安装包，包括
 
 ## 下载安装脚本
 
-{% highlight sh %}
+```
 git clone https://github.com/zer0131/lnmp-centos.git
-{% endhighlight %}
+```
 
 ## 全部安装
 
 修改权限，并安装
 
-{% highlight sh %}
+```
 chmod -R 777 lnmp-centos 
 cd lnmp-centos 
 ./install.sh
-{% endhighlight %}
+```
 
 接下来就是耐心等待安装了
 
 ## 单独安装
 
 目录中包含各个软件的安装脚本，如果你想单独安装软件，可以单独执行对应的.sh文件。
-{% highlight sh %}
+```
 ├─lnmp-centos
 │  ├─nginx_config          nginx配置目录
 │  │  ├─nginx.conf         nginx配置文件
@@ -37,31 +37,31 @@ cd lnmp-centos
 │  ├─install_nginx.sh      nginx安装脚本
 │  ├─install_php.sh        php安装脚本
 │  └─install_redis.sh      redis安装脚本
-{% endhighlight %}
+```
 
 **注意：单独安装任何软件都要先执行install_env.sh(执行一次就可以)**
 
 ## 后续操作
 
 mysql设置密码：
-{% highlight sh %}
+```
 mysqladmin -u root password 'u password'
-{% endhighlight %}
+```
 
 开启或关闭mysql服务：
-{% highlight sh %}
+```
 /etc/init.d/mysqld [start|stop]
-{% endhighlight %}
+```
 
 开启或关闭nginx服务：
-{% highlight sh %}
+```
 /etc/init.d/nginx [start|stop]
-{% endhighlight %}
+```
 
 开启或关闭php-fmp服务：
-{% highlight sh %}
+```
 /etc/init.d/php-fpm [start|stop]
-{% endhighlight %}
+```
 
 nginx配置文件及虚拟目录在**/usr/local/nginx/conf/**下
 
